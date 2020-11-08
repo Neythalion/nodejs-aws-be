@@ -1,0 +1,51 @@
+[
+  {
+    "count": 3,
+    "genre": "Fighting",
+    "id": "9195882d-a421-4ae8-8992-478aae476cc0",
+    "price": 1199,
+    "title": "Tekken 7"
+  },
+  {
+    "count": 5,
+    "genre": "Fighting",
+    "id": "9195882d-a421-4ae8-8992-478aae476cc1",
+    "price": 699,
+    "title": "Mortal Kombat X"
+  },
+  {
+    "count": 3,
+    "genre": "Fighting",
+    "id": "9195882d-a421-4ae8-8992-478aae476cc2",
+    "price": 1035,
+    "title": "Mortal Kombat 11"
+  },
+  {
+    "count": 2,
+    "genre": "RPG",
+    "id": "9195882d-a421-4ae8-8992-478aae476cc3",
+    "price": 859,
+    "title": "Fallout 4"
+  },
+  {
+    "count": 1,
+    "genre": "RPG",
+    "id": "9195882d-a421-4ae8-8992-478aae476cc4",
+    "price": 1199,
+    "title": "Dark Souls: Remastered"
+  },
+  {
+    "count": 8,
+    "genre": "RPG",
+    "id": "9195882d-a421-4ae8-8992-478aae476cc5",
+    "price": 1199,
+    "title": "Dark Souls 2"
+  },
+  {
+    "count": 7,
+    "genre": "RPG",
+    "id": "9195882d-a421-4ae8-8992-478aae476cc6",
+    "price": 1999,
+    "title": "Dark Souls 3"
+  }
+]
