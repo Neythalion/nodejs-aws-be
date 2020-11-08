@@ -6,6 +6,14 @@ provider:
   stage: dev
   region: eu-west-1
 
+  # dbConfig.json with private data was not added to repo
+  environment:
+    PG_HOST: ${file(dbConfig.json):PG_HOST}
+    PG_PORT: ${file(dbConfig.json):PG_PORT}
+    PG_DATABASE: ${file(dbConfig.json):PG_DATABASE}
+    PG_USERNAME: ${file(dbConfig.json):DB_USER}
+    PG_PASSWORD: ${file(dbConfig.json):DB_PASS}
+
 plugins:
   - serverless-webpack
 
@@ -34,3 +42,11 @@ functions:
             parameters:
               paths:
                 productId: true
+
+  addProduct:
+    handler: handler.addProductHandler
+    events:
+      - http:
+          path: product
+          method: post
+          cors: true
