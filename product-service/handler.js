@@ -1,9 +1,11 @@
 import {
     getProductsHandler,
-    getProductByIdHandler
+    getProductByIdHandler,
+    addProductHandler
 } from './src/handlers';
 
 export {
     getProductsHandler,
-    getProductByIdHandler
+    getProductByIdHandler,
+    addProductHandler
 };

@@ -6,8 +6,17 @@ provider:
   stage: dev
   region: eu-west-1
 
+  # dbConfig.json with private data was not added to repo
+  environment:
+    PG_HOST: ${env:PG_HOST}
+    PG_PORT: ${env:PG_PORT}
+    PG_DATABASE: ${env:PG_DATABASE}
+    PG_USERNAME: ${env:DB_USER}
+    PG_PASSWORD: ${env:DB_PASS}
+
 plugins:
   - serverless-webpack
+  - serverless-dotenv-plugin
 
 custom:
   webpack:
@@ -34,3 +43,11 @@ functions:
             parameters:
               paths:
                 productId: true
+
+  addProduct:
+    handler: handler.addProductHandler
+    events:
+      - http:
+          path: product
+          method: post
+          cors: true

@@ -1,12 +1,18 @@
-import products from '../mock/products.json';
+import { Client } from 'pg';
+
+import dbConfig from '../constants/db-config';
 
 const getProductById = async event => {
-    console.log(`Lambda invocation - getProductById - id: ${event.pathParameters.productId} - event: `, event);
+    const client = new Client(dbConfig);
+
+    await client.connect();
 
     try {
-        const product = products.find(el => el.id === event.pathParameters.productId);
+        const result = await client.query(`
+            select * from product_list inner join product_stock using (id) where id = '${event.pathParameters.productId}'
+        `);
 
-        if (!product) {
+        if (result.rows.length === 0) {
             return {
                 statusCode: 404,
                 body: JSON.stringify({ message: 'product not found' })
@@ -15,15 +21,17 @@ const getProductById = async event => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify(product)
+            body: JSON.stringify(result.rows[0])
         };
     } catch (e) {
-        console.log(`Lambda invocation error - getProductById - id: ${event.pathParameters.productId} - error: ${e}`);
+        console.log(`Lambda invocation error - getProductById - error: `, e);
 
         return {
             statusCode: 500,
             body: JSON.stringify(e)
         };
+    } finally {
+        client.end();
     }
 };
 
