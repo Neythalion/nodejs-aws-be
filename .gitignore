@@ -119,6 +119,3 @@ dist
 /yarn.lock
 */package-lock.json
 */yarn.lock
-
-# Personal data
-*/dbConfig.json

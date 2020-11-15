@@ -8,14 +8,15 @@ provider:
 
   # dbConfig.json with private data was not added to repo
   environment:
-    PG_HOST: ${file(dbConfig.json):PG_HOST}
-    PG_PORT: ${file(dbConfig.json):PG_PORT}
-    PG_DATABASE: ${file(dbConfig.json):PG_DATABASE}
-    PG_USERNAME: ${file(dbConfig.json):DB_USER}
-    PG_PASSWORD: ${file(dbConfig.json):DB_PASS}
+    PG_HOST: ${env:PG_HOST}
+    PG_PORT: ${env:PG_PORT}
+    PG_DATABASE: ${env:PG_DATABASE}
+    PG_USERNAME: ${env:DB_USER}
+    PG_PASSWORD: ${env:DB_PASS}
 
 plugins:
   - serverless-webpack
+  - serverless-dotenv-plugin
 
 custom:
   webpack:
