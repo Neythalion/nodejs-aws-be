@@ -3,7 +3,7 @@ import csv from 'csv-parser';
 
 import { BUCKET } from '../constants/bucket-name';
 
-const importFileParser = async event => {
+const importFileParser = event => {
     const s3 = new AWS.S3({ region: 'eu-west-1' });
 
     event.Records.forEach(record => {
