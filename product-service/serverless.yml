@@ -13,6 +13,38 @@ provider:
     PG_DATABASE: ${env:PG_DATABASE}
     PG_USERNAME: ${env:DB_USER}
     PG_PASSWORD: ${env:DB_PASS}
+    SNS_ARN:
+      Ref: SNSTopic
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "sns:*"
+      Resource:
+        Ref: SNSTopic
+
+resources:
+  Resources:
+    SNSTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: my-aws-app-products-topic
+    SNSSubscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint: credo166@mail.ru
+        Protocol: email
+        TopicArn:
+          Ref: SNSTopic
+        FilterPolicy: {"count": [{"numeric": ["<=", 10]}]}
+    SNSAdditionalSubscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint: lazapyc166@gmail.com
+        Protocol: email
+        TopicArn:
+          Ref: SNSTopic
+        FilterPolicy: {"count": [{"numeric": [">", 10]}]}
 
 plugins:
   - serverless-webpack
@@ -51,3 +83,10 @@ functions:
           path: product
           method: post
           cors: true
+
+  productsBatchProcess:
+    handler: handler.productsBatchProcessHandler
+    events:
+      - sqs:
+          batchSize: 5
+          arn: "arn:aws:sqs:eu-west-1:667745149749:my-aws-app-products-queue"

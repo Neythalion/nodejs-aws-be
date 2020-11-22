@@ -5,6 +5,7 @@ import { CLIENT_ORIGIN_SCHEME } from '../constants/cors-schemes';
 import getProducts from './getProducts';
 import getProductById from './getProductById';
 import addProduct from './addProduct';
+import productsBatchProcess from './productsBatchProcess';
 import { logger, validator } from '../middlewares';
 
 import productSchema from '../schemes/productSchema.json';
@@ -23,9 +24,12 @@ const addProductHandler = middy(addProduct)
     .use(cors(commonCorsConfig))
     .use(logger({ handlerName: 'addProduct' }))
     .use(validator(productSchema));
+const productsBatchProcessHandler = middy(productsBatchProcess)
+    .use(logger({ handlerName: 'productsBatchProcess' }));
 
 export {
     getProductsHandler,
     getProductByIdHandler,
-    addProductHandler
+    addProductHandler,
+    productsBatchProcessHandler
 };
