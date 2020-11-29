@@ -1,0 +1,24 @@
+{
+  "name": "authorization-service",
+  "version": "1.0.0",
+  "description": "Authorization service for AWS",
+  "main": "handler.js",
+  "scripts": {
+    "deploy": "sls deploy"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.792.0",
+    "babel-preset-env": "^1.7.0",
+    "serverless-dotenv-plugin": "^3.1.0",
+    "serverless-webpack": "^5.3.5",
+    "webpack": "^4.44.1",
+    "webpack-node-externals": "^2.5.0"
+  }
+}

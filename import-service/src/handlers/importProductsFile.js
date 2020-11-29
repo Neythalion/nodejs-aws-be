@@ -3,6 +3,8 @@ import AWS from 'aws-sdk';
 import { BUCKET } from '../constants/bucket-name';
 
 const importProductsFile = async event => {
+    console.log(`Lambda invocation - importProductsFile - event: `, event);
+
     const fileName = event.queryStringParameters.name;
     const filePath = `uploaded/${fileName}`;
     const s3 = new AWS.S3({ region: 'eu-west-1' });
