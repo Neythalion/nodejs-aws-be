@@ -1,11 +1,13 @@
 import {
     getProductsHandler,
     getProductByIdHandler,
-    addProductHandler
+    addProductHandler,
+    productsBatchProcessHandler
 } from './src/handlers';
 
 export {
     getProductsHandler,
     getProductByIdHandler,
-    addProductHandler
+    addProductHandler,
+    productsBatchProcessHandler
 };
